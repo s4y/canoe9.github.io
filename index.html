@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>canoe9.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.box {
+  width: 540px;
+  margin: 40px auto;
+}
+#title {
+  font-size: 24px;
+}
+.trait > h2 {
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+  <h1 id="title">Canoe9:
+    <a href="https://en.wikipedia.org/wiki/Big_Five_personality_traits">
+      The Big Five Personality Traits
+    <a>
+  </h1>
+  <div class="trait" id="cons"></div>
+  <div class="trait" id="agre"></div>
+  <div class="trait" id="neur"></div>
+  <div class="trait" id="open"></div>
+  <div class="trait" id="extr"></div>
+</div>
+</body>
+
+<script>
+"use strict";
+var traits = [
+  {id: "cons", name: "Conscientiousness"},
+  {id: "agre", name: "Agreeableness"},
+  {id: "neur", name: "Neuroticism"},
+  {id: "open", name: "Openness to Experience"},
+  {id: "extr", name: "Extraversion"}
+];
+var scores = document.URL.split("#").reverse()[0].match("[0-9]{5}$");
+if (scores) {
+  for(var i = 0; i < traits.length; i++) {
+    var t = document.createElement("h2");
+    var trait = traits[i];
+    var div = document.querySelector(".trait#" + trait.id);
+    trait.score = Number(scores[0].charAt(i))*1 + 1;
+    t.textContent = trait.name + ": " + trait.score + "/10";
+    div.textContent = "";
+    div.appendChild(t);
+    console.log(div);
+  }
+  console.log("populate descriptions");
+} else {
+  console.log("populate questions");
+}
+</script>
+</html>
