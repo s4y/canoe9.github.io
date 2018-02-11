@@ -49,7 +49,7 @@ if (scores) {
     var trait = traits[i];
     var div = document.getElementById(trait.id);
     trait.score = scores[i];
-    t.textContent = trait.name + ": " + trait.score + "/10";
+    t.textContent = trait.name + ": " + (trait.score + 1) * 10 + '%';
     div.textContent = "";
     div.appendChild(t);
     console.log(div);
