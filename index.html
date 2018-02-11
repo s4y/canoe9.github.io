@@ -42,13 +42,13 @@ var traits = [
   {id: "open", name: "Openness to Experience"},
   {id: "extr", name: "Extraversion"}
 ];
-var scores = document.URL.split("#").reverse()[0].match("[0-9]{5}$");
+var scores = location.hash.slice(1).split('').map(x => +x);
 if (scores) {
   for(var i = 0; i < traits.length; i++) {
     var t = document.createElement("h2");
     var trait = traits[i];
     var div = document.getElementById(trait.id);
-    trait.score = Number(scores[0].charAt(i))*1 + 1;
+    trait.score = scores[i];
     t.textContent = trait.name + ": " + trait.score + "/10";
     div.textContent = "";
     div.appendChild(t);
