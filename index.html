@@ -46,17 +46,24 @@ var traits = [
   {name: "Extraversion"},
 ];
 var traitsEl = document.getElementById('traits');
-var scores = location.hash.slice(1).split('').map(x => +x);
-if (scores.length == traits.length) {
-  for(var i = 0; i < traits.length; i++) {
-    var traitEl = document.createElement("li");
-    var trait = traits[i];
-    trait.score = scores[i];
-    traitEl.textContent = trait.name + ": " + (trait.score + 1) * 10 + '%';
-    traitsEl.appendChild(traitEl);
-  }
-} else {
-  console.log("populate questions");
+
+function populatePage() {
+    traitsEl.innerHTML = "";
+    var scores = location.hash.slice(1).split('').map(x => +x);
+    if (scores.length == traits.length) {
+      for(var i = 0; i < traits.length; i++) {
+        var traitEl = document.createElement("li");
+        var trait = traits[i];
+        trait.score = scores[i];
+        traitEl.textContent = trait.name + ": " + (trait.score + 1) * 10 + '%';
+        traitsEl.appendChild(traitEl);
+      }
+    } else {
+      console.log("populate questions");
+    }
 }
+
+window.addEventListener("hashchange", populatePage);
+populatePage();
 </script>
 </html>
