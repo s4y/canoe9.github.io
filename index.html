@@ -47,7 +47,7 @@ if (scores) {
   for(var i = 0; i < traits.length; i++) {
     var t = document.createElement("h2");
     var trait = traits[i];
-    var div = document.querySelector(".trait#" + trait.id);
+    var div = document.getElementById(trait.id);
     trait.score = Number(scores[0].charAt(i))*1 + 1;
     t.textContent = trait.name + ": " + trait.score + "/10";
     div.textContent = "";
